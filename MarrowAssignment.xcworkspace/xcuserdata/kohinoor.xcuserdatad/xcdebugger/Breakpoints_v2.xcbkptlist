@@ -66,36 +66,6 @@
             endingLineNumber = "30"
             landmarkName = "FetchAllBooks(searchBook:limit:offset:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A540E172-6827-49CC-A413-C7AA9746D073 - 97e3fcbbca211cb5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;MarrowAssignment.CBooksModel&gt;) -&gt; () in MarrowAssignment.HomeViewModel.FetchAllBooks(searchBook: Swift.String, limit: Swift.Int, offset: Swift.Int) -&gt; ()"
-                  moduleName = "MarrowAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kohinoor/Documents/Projects/MarrowAssignment/MarrowAssignment/Screens/Home/ViewModel/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30">
-               </Location>
-               <Location
-                  uuid = "A540E172-6827-49CC-A413-C7AA9746D073 - dfc061fb6b0c2d26"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (MarrowAssignment.CBooksModel) -&gt; () in MarrowAssignment.HomeViewModel.FetchAllBooks(searchBook: Swift.String, limit: Swift.Int, offset: Swift.Int) -&gt; ()"
-                  moduleName = "MarrowAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kohinoor/Documents/Projects/MarrowAssignment/MarrowAssignment/Screens/Home/ViewModel/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

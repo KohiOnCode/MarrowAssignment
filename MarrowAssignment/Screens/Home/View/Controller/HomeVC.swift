@@ -58,8 +58,12 @@ class HomeVC: UIViewController {
     
     // MARK: LOGOUT_SCREEN_BTN_ACTION
     @IBAction func logoutBtnAction(_ sender : UIButton){
-        LocalStore.shared.isLoggedIn = false
-        self.NavigateToNextVC(storyboard: "Login", viewController: "LoginVC")
+        showAlertWithAction("", message: "Are you sure to logout?", buttons: ["Cancel","OK"]) { button in
+            if button == 1{
+                LocalStore.shared.isLoggedIn = false
+                self.NavigateToNextVC(storyboard: "Login", viewController: "LoginVC")
+            }
+        }
     }
     
 
