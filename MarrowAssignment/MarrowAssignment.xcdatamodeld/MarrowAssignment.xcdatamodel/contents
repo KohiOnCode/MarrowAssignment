@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDBookmark" representedClassName="CDBookmark" syncable="YES">
+        <attribute name="bookAuthor" optional="YES" attributeType="String"/>
+        <attribute name="bookHits" optional="YES" attributeType="String"/>
+        <attribute name="bookImage" optional="YES" attributeType="String"/>
+        <attribute name="bookRating" optional="YES" attributeType="String"/>
+        <attribute name="bookTitle" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="bookTitle"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CDUser" representedClassName="CDUser" syncable="YES">
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="email"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+</model>
