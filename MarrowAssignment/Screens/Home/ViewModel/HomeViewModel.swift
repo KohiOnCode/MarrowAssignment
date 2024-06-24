@@ -23,6 +23,7 @@ class HomeViewModel{
     func FetchAllBooks(searchBook : String, limit : Int = 10, offset : Int){
         Webservices.shared.fetchAPI(_APIurl: (APIS.allBooksBaseAPI + "title=\(searchBook)&limit=\(limit)&offset=\(offset)"), resultType: CBooksModel.self) {[weak self] result in
             defer{
+                self?.searchedBook = searchBook
                 self?.page += 1
                 self?.delegate?.allBooks(books: self?.books ?? [])
             }
@@ -40,7 +41,7 @@ class HomeViewModel{
                         docHint = hint.description
                     }
                     
-                    let book = BookModel(bookTitle: doc.title, bookAuthor: doc.authorName.joined(separator: ","), bookRating: docRating, bookHits: docHint, bookImage: doc.coverI.description)
+                let book = BookModel(bookTitle: doc.title ?? "", bookAuthor: doc.authorName.joined(separator: ","), bookRating: docRating, bookHits: docHint, bookImage: doc.coverI?.description)
                 
                     self?.books.append(book)
                 }

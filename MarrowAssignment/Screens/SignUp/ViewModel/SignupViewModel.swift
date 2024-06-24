@@ -8,7 +8,7 @@
 import Foundation
 
 protocol fetchCountryDelegate : AnyObject{
-    func AllCountries(countries : [String])
+    func AllCountries(countries : [String], country : String)
 }
 
 
@@ -18,6 +18,7 @@ class SignupViewModel {
     
     weak var delegate : fetchCountryDelegate?
     var countiesArr : [String] = []
+    var defaultCountry = ""
     let validationManager = ValidationManager()
     
     // MARK: REGISTER_USER_METHOD
@@ -25,11 +26,13 @@ class SignupViewModel {
     func Register(user : UserModel) -> ValidationErrors{
         let valid = validationManager.validateRegister(user: user)
         if valid == .success{
-            if let registeredMAil = CDUserRepositoryManager.shared.getUserByEmail(email: user.email.lowercased())?.email{
+            if (CDUserRepositoryManager.shared.getUserByEmail(email: user.email.lowercased())?.email) != nil{
                 return .alreadyRegistered
             }
             else{
                 CDUserRepositoryManager.shared.Create(user: user)
+                CDBookmarkRepositoryManager.shared.deleteAllData()
+                LocalStore.shared.savedEmail = user.email
                 return .registerSuccess
             }
         }
@@ -40,27 +43,44 @@ class SignupViewModel {
     
     // MARK: FETCH_CURRENT_DEFAULT_COUNTRY
     
-    func currentCountry() -> String{
-        guard let countries = LocalStore.shared.countryArr else { return ""}
-        guard let country = LocalStore.shared.defaultCountry else { return ""}
-        return countries[country]
+    func currentCountry(){
+        if let countryCode = (Locale.current as NSLocale).object(forKey: .countryCode) as? String {
+            defaultCountry = LocalStore.shared.allCountry?[countryCode] ?? ""
+        }
     }
     
     // MARK: FETCH_ALL_COUNTRIES_METHOD
     
     func fetchCountries(){
-        if let arr = LocalStore.shared.countryArr{
-            delegate?.AllCountries(countries: arr)
+        if var dict = LocalStore.shared.allCountry{
+            dict.forEach({countiesArr.append($0.value)})
+            currentCountry()
+            delegate?.AllCountries(countries: countiesArr.sorted(), country: defaultCountry)
         }
         else{
+            LocalStore.shared.allCountry = [:]
             Webservices.shared.fetchAPI(_APIurl: APIS.countryAPI, resultType: CountryModel.self) {[weak self] result in
                 result.data.forEach { (key,value) in
                     self?.countiesArr.append(value.country)
+                    LocalStore.shared.allCountry?[key] = value.country
                 }
-                LocalStore.shared.countryArr = self?.countiesArr.sorted()
-                self?.delegate?.AllCountries(countries: LocalStore.shared.countryArr ?? [])
+                self?.currentCountry()
+                self?.delegate?.AllCountries(countries: self?.countiesArr.sorted() ?? [],  country: self?.defaultCountry ?? "")
             }
         }
+        
     }
+    
+    
+    
+       func checkPasswordFldContainsUppercaseLetter(_ password: String) -> Bool {
+           return validationManager.containsUppercaseLetter(password)
+       }
+
+    
+       func checkPasswordFldContainsSpecialCharacter(_ password: String) -> Bool {
+           return validationManager.containsSpecialCharacter(password)
+       }
+    
     
 }

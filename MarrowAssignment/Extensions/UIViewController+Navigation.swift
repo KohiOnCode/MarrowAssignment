@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 extension UIViewController{
-    
     func NavigateToNextVC(storyboard : String, viewController : String){
         let storyBoard = UIStoryboard(name: storyboard, bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: viewController)

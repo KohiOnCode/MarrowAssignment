@@ -23,14 +23,28 @@ extension SignupVC : UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        LocalStore.shared.defaultCountry = row
+
+        selectedCountry = countriesArr[row]
     }
     
 }
 
+extension SignupVC : UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        let password = (currentText as NSString).replacingCharacters(in: range, with: string)
+        lengthPasswordCheckBoxBtn.setCheckBoxUI(value: password.count >= 8)
+        specialCharCheckBoxBtn.setCheckBoxUI(value: signupVM?.checkPasswordFldContainsSpecialCharacter(password) ?? false)
+        uppercaseLetterCheckBoxBtn.setCheckBoxUI(value: signupVM?.checkPasswordFldContainsUppercaseLetter(password) ?? false)
+        return true
+    }
+}
+
+
 extension SignupVC : fetchCountryDelegate{
-    func AllCountries(countries: [String]) {
-        countriesArr = countries
+    func AllCountries(countries: [String], country: String) {
+        self.selectedCountry = country
+        self.countriesArr = countries
         DispatchQueue.main.async {
             self.countryPicker.reloadAllComponents()
         }

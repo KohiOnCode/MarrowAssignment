@@ -9,12 +9,12 @@ import Foundation
 
 // MARK: - CBooksModel
 struct CBooksModel: Codable {
-    let numFound, start: Int
-    let numFoundExact: Bool
+    let numFound, start: Int?
+    let numFoundExact: Bool?
     let docs: [Doc]
-    let booksModelNumFound: Int
-    let q: String
-    let offset: Int
+    let booksModelNumFound: Int?
+    let q: String?
+    let offset: Int?
 
     enum CodingKeys: String, CodingKey {
         case numFound, start, numFoundExact, docs
@@ -28,33 +28,33 @@ struct Doc: Codable {
     let authorAlternativeName: [String]?
     let authorKey, authorName: [String]
     let contributor: [String]?
-    let coverEditionKey: String
-    let coverI: Int
+    let coverEditionKey: String?
+    let coverI: Int?
     let ddc: [String]?
-    let ebookAccess: String
-    let ebookCountI, editionCount: Int
-    let editionKey: [String]
-    let firstPublishYear: Int
+    let ebookAccess: String?
+    let ebookCountI, editionCount: Int?
+    let editionKey: [String]?
+    let firstPublishYear: Int?
     let firstSentence, format: [String]?
-    let hasFulltext: Bool
+    let hasFulltext: Bool?
     let ia, iaCollection: [String]?
     let iaCollectionS: String?
-    let isbn: [String]
-    let key: String
-    let language: [String]
-    let lastModifiedI: Int
+    let isbn: [String]?
+    let key: String?
+    let language: [String]?
+    let lastModifiedI: Int?
     let lcc, lccn: [String]?
     let lendingEditionS, lendingIdentifierS: String?
-    let numberOfPagesMedian: Int
+    let numberOfPagesMedian: Int?
     let oclc: [String]?
     let ospCount: Int?
     let printdisabledS: String?
-    let publicScanB: Bool
-    let publishDate: [String]
+    let publicScanB: Bool?
+    let publishDate: [String]?
     let publishPlace: [String]?
-    let publishYear: [Int]
-    let publisher, seed: [String]
-    let title, titleSuggest, titleSort: String
+    let publishYear: [Int]?
+    let publisher, seed: [String]?
+    let title, titleSuggest, titleSort: String?
     let type: TypeEnum
     let idAmazon, idGoodreads, idLibrarything, idOverdrive: [String]?
     let subject, time, iaLoadedID, iaBoxID: [String]?
@@ -62,11 +62,11 @@ struct Doc: Codable {
     let ratingsCount, ratingsCount1, ratingsCount2, ratingsCount3: Int?
     let ratingsCount4, ratingsCount5: Int?
     let readinglogCount, wantToReadCount, currentlyReadingCount, alreadyReadCount: Int?
-    let publisherFacet: [String]
+    let publisherFacet: [String]?
     let timeFacet, subjectFacet: [String]?
-    let version: Double
+    let version: Double?
     let lccSort: String?
-    let authorFacet: [String]
+    let authorFacet: [String]?
     let subjectKey: [String]?
     let ddcSort: String?
     let timeKey, person, personKey, personFacet: [String]?

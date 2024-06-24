@@ -54,6 +54,7 @@
 		14E0FA9C2C245B4800D18A80 /* SortCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14E0FA9A2C245B4800D18A80 /* SortCVCell.xib */; };
 		14E0FA9F2C248D6A00D18A80 /* BooksTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E0FA9D2C248D6A00D18A80 /* BooksTblCell.swift */; };
 		14E0FAA02C248D6A00D18A80 /* BooksTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14E0FA9E2C248D6A00D18A80 /* BooksTblCell.xib */; };
+		14EA48CF2C2996530025F855 /* UIButton+CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EA48CE2C2996530025F855 /* UIButton+CheckBox.swift */; };
 		C452B5277C7D5693D9D65345 /* Pods_MarrowAssignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B487C9AEBEEE5D09803CDC08 /* Pods_MarrowAssignment.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		14E0FA9A2C245B4800D18A80 /* SortCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortCVCell.xib; sourceTree = "<group>"; };
 		14E0FA9D2C248D6A00D18A80 /* BooksTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTblCell.swift; sourceTree = "<group>"; };
 		14E0FA9E2C248D6A00D18A80 /* BooksTblCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BooksTblCell.xib; sourceTree = "<group>"; };
+		14EA48CE2C2996530025F855 /* UIButton+CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+CheckBox.swift"; sourceTree = "<group>"; };
 		5B1E5D52C3D484B00F354CC8 /* Pods-MarrowAssignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarrowAssignment.debug.xcconfig"; path = "Target Support Files/Pods-MarrowAssignment/Pods-MarrowAssignment.debug.xcconfig"; sourceTree = "<group>"; };
 		B487C9AEBEEE5D09803CDC08 /* Pods_MarrowAssignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarrowAssignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D978F78BC5AA2EA836CC5B7E /* Pods-MarrowAssignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarrowAssignment.release.xcconfig"; path = "Target Support Files/Pods-MarrowAssignment/Pods-MarrowAssignment.release.xcconfig"; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 				14E0FA912C245A9100D18A80 /* UITableViewCell+Register.swift */,
 				14E0FA932C245AB600D18A80 /* UIcollectionViewCell+Register.swift */,
 				1435B0D92C25856D00EC3B18 /* UIViewcontroller+Alertcontroller.swift */,
+				14EA48CE2C2996530025F855 /* UIButton+CheckBox.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				1435B0C42C25792300EC3B18 /* CDBookmark+CoreDataClass.swift in Sources */,
 				1435B0C52C25792300EC3B18 /* CDBookmark+CoreDataProperties.swift in Sources */,
 				1435B0D82C257F0400EC3B18 /* CDBookmarkRepositoryManager.swift in Sources */,
+				14EA48CF2C2996530025F855 /* UIButton+CheckBox.swift in Sources */,
 				1435B0AD2C25279E00EC3B18 /* APICollection.swift in Sources */,
 				14511BEE2C244E3F00173E42 /* SignupVC.swift in Sources */,
 				14DA1CB32C242F8E00A97847 /* LandingVC.swift in Sources */,

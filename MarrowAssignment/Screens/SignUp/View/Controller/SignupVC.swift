@@ -16,17 +16,24 @@ class SignupVC: UIViewController {
     @IBOutlet weak var emailTxtFld : UITextField!
     @IBOutlet weak var passwordTxtFld : UITextField!
     
+    @IBOutlet weak var lengthPasswordCheckBoxBtn : UIButton!
+    @IBOutlet weak var specialCharCheckBoxBtn : UIButton!
+    @IBOutlet weak var uppercaseLetterCheckBoxBtn : UIButton!
+    
+    
     // MARK: VARIABLES
     
     var countriesArr : [String] = []{
         didSet{
-            if let country = LocalStore.shared.defaultCountry{
-                countryPicker.selectRow(country, inComponent: 0, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.1){
+                self.countryPicker.selectRow(self.countriesArr.firstIndex(of: self.selectedCountry) ?? 0, inComponent: 0, animated: false)
+                
             }
         }
     }
+    
     var signupVM : SignupViewModel?
-    var passCount = 0
+    var selectedCountry = ""
     
     
     // MARK: VIEW_DID_LOAD
@@ -36,6 +43,7 @@ class SignupVC: UIViewController {
         setUpCountryPicker()
         signupVM = SignupViewModel()
         signupVM?.delegate = self
+        passwordTxtFld.delegate = self
         
     }
     
@@ -58,41 +66,18 @@ class SignupVC: UIViewController {
     // MARK: LET'S GO _BUTTON_ACTION
     
     @IBAction func letsgoBtnAction(_ sender : UIButton){
-        let user = UserModel(email: emailTxtFld.text?.lowercased() ?? "", password: passwordTxtFld.text ?? "", country: signupVM?.currentCountry() ?? "")
+        let user = UserModel(email: emailTxtFld.text?.lowercased() ?? "", password: passwordTxtFld.text ?? "", country: selectedCountry)
         let validation = signupVM?.Register(user: user)
         if validation == .registerSuccess{
-            self.NavigateToNextVC(storyboard: "Login", viewController: "LoginVC")
+            self.NavigateToNextVC(storyboard: "Main", viewController: "HomeVC")
         }
         else{
             ShowAlert(mesaage: validation?.rawValue ?? "Something went wrong")
         }
     }
     
-    
-    // MARK: Password_CheckBox_Buttons_Action
-    
-    @IBAction func passwordValid(_ sender: UIButton) {
-        
-        if sender.imageView?.image == UIImage(named: "check"){
-            sender.setImage(UIImage(named: "uncheck"), for: .normal)
-            passCount -= 1
-        }
-        else{
-            sender.setImage(UIImage(named: "check"), for: .normal)
-            passCount += 1
-            
-        }
-        
-        if passCount == 3{
-            letsGoBtn.isEnabled = true
-            letsGoBtn.backgroundColor = UIColor(red: 124/255, green: 198/255, blue: 220/255, alpha: 1.0)
-        }
-        else{
-            letsGoBtn.isEnabled = false
-            letsGoBtn.backgroundColor = .lightGray
-        }
-    }
-    
-    
 }
+
+
+
 

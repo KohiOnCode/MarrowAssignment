@@ -17,7 +17,6 @@ class LoginVC: UIViewController {
     // MARK: VARIABLES
     
     var loginVM : LoginViewModel?
-    var passCount = 0
     
     // MARK: VIEW_DID_LOAD
 

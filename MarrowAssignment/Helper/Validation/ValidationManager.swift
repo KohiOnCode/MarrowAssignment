@@ -82,6 +82,16 @@ class ValidationManager{
         return .success
     }
     
+    func containsUppercaseLetter(_ password: String) -> Bool {
+        return password.rangeOfCharacter(from: .uppercaseLetters) != nil
+    }
+
+ 
+    func containsSpecialCharacter(_ password: String) -> Bool {
+        let specialCharacterSet = CharacterSet(charactersIn: "!@#$%^&*()-_=+[{]};:'\"<>,.?/")
+        return password.rangeOfCharacter(from: specialCharacterSet) != nil
+    }
+    
 }
 
 

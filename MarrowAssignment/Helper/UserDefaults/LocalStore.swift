@@ -15,21 +15,13 @@ final class LocalStore{
         
     }
     
-    var countryArr : [String]?{
-        get {
-            return UserDefaults.standard.value(forKey: "countries") as? [String]
-        }
-        set{
-            UserDefaults.standard.setValue(newValue, forKey: "countries")
-        }
-    }
     
-    var defaultCountry : Int?{
+    var allCountry : [String:String]?{
         get {
-            return UserDefaults.standard.value(forKey: "country") as? Int
+            return UserDefaults.standard.value(forKey: "allCountry") as? [String:String]
         }
         set{
-            UserDefaults.standard.setValue(newValue, forKey: "country")
+            UserDefaults.standard.setValue(newValue, forKey: "allCountry")
         }
     }
     

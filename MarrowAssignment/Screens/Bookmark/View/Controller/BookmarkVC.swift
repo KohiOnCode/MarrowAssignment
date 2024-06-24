@@ -29,7 +29,7 @@ class BookmarkVC: UIViewController {
         super.viewDidLoad()
         bookmarkVM = BookmarkViewModel()
         BooksTblCell.registerTableCell(for: booksTblVw)
-        
+        booksTblVw.separatorStyle = .none
     }
     
     // MARK: VIEW_WILL_APPEAR

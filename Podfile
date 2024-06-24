@@ -9,6 +9,7 @@ target 'MarrowAssignment' do
 
  pod 'IQKeyboardManagerSwift'
  pod 'SDWebImage'
+ pod 'ProgressHUD'
 
 end
 

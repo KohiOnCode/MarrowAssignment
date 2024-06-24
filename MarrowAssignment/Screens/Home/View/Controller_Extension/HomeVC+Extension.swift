@@ -47,6 +47,11 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedSortIndex = indexPath.item
+        defer{
+            if let bookss = books{
+                booksTblVw.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            }
+        }
         switch indexPath.row{
         case 0:
             books?.sort { $0.bookTitle < $1.bookTitle }
@@ -144,6 +149,7 @@ extension HomeVC : UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         searchBookWorkItem?.cancel()
+        selectedSortIndex = -1
         let currentText = textField.text ?? ""
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
         if updatedText.count > 2{

@@ -34,6 +34,7 @@ class CDBookmarkRepository : CDBookmarkDelegate {
         cdBookmark.bookRating = book.bookRating
         cdBookmark.bookHits = book.bookHits
         cdBookmark.bookImage = book.bookImage
+        PersistantStorage.shared.saveContext()
     }
     
     func getBookByTitle(bookTitle: String) -> CDBookmark? {
@@ -60,6 +61,7 @@ class CDBookmarkRepository : CDBookmarkDelegate {
             } catch {
                 print("Error deleting data: \(error)")
             }
+        PersistantStorage.shared.saveContext()
         }
     
     
